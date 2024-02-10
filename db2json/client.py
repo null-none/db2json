@@ -38,7 +38,7 @@ class Db2json:
         tables = cursor.fetchall()
         for table_name in tables:
             results = self.get_all_records(table_name["name"])
-            self.open_if_not_exists(table_name["name"] + ".json")
-            with open(table_name["name"] + ".json", "w") as the_file:
+            self.open_if_not_exists("result/{}.json".format(table_name["name"]))
+            with open("result/{}.json".format(table_name["name"]), "w") as the_file:
                 the_file.write(results)
         connection.close()
